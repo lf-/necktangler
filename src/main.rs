@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2024 jade lovelace
+//
+// SPDX-License-Identifier: MPL-2.0
+
 //! Makes a funny branch that has a merge commit per hydra build, and
 use std::{path::PathBuf, str::FromStr};
 

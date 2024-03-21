@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2024 jade lovelace
+#
+# SPDX-License-Identifier: MPL-2.0
+
 [package]
 name = "necktangler"
 version = "0.1.0"
