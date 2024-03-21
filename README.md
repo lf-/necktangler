@@ -19,8 +19,21 @@ there is a lineage of merge commits on the left side](./screenshot.png)
 ## howmst the heck
 
 this tool generates one merge commit per hydra bump, in oldest to newest order
-in the file. it makes no attempt to sort the file, though that would be a good
-idea. we did not have time to do so.
+in the file, with identical trees to the corresponding commit in nixpkgs. it
+makes no attempt to sort the input file, though that would be a good idea. we
+did not have time to do so.
+
+because of this structure, any git tooling can just follow the first-parent
+relations of all the commits to get only commits with hydra builds.
+
+how to run:
+
+```
+$ cargo r -- -i ./history-v2 -b refs/heads/meow -C ./nixpkgs
+```
+
+you would then have a branch "meow" that has a bunch of hydra update merge
+commits from which you can bisect.
 
 ## todos
 
