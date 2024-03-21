@@ -1,0 +1,13 @@
+[package]
+name = "necktangler"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = { version = "4.5.3", features = ["derive"] }
+csv = "1.3.0"
+gix = { version = "0.61.0", default-features = false }
+serde = { version = "1.0.197", features = ["derive"] }
+tokio = { version = "1.36.0", features = ["full"] }
