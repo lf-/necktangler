@@ -29,7 +29,7 @@ relations of all the commits to get only commits with hydra builds.
 how to run:
 
 ```
-$ cargo r -- -i ./history-v2 -b refs/heads/meow -C ./nixpkgs
+$ cargo r -- -i ./data.csv -b refs/heads/meow -C ./nixpkgs
 ```
 
 you would then have a branch "meow" that has a bunch of hydra update merge
@@ -41,12 +41,14 @@ commits from which you can bisect.
   the parent commit at the tip of the branch and then continuing from that
   point. we mean its idempotent so who cares, but it might get slow for very
   long histories.
-* acquire a data source. although this was developed against
-  https://channels.nix.gsc.io for lack of motivation to solve this problem,
-  that Web site does not have any data for the past year.
+* acquire a data source.
 
-  solution: some hydra db query.
+  we have a query for the production hydra database, and some stale test data
+  committed to the repo, but it needs to get shoved in a cron job.
+
+  the query as it stands was run like so:
+  `psql $SOME_CONNECTION_DETAILS -v job=tested -v project=nixos -v jobset=trunk-combined --csv -f hydra-query.sql > data.csv`
 * make her faster (read: instant rather than a few seconds). probably could use
   the commit-graph, as we *bet* that we are hitting absolutely pathological git
   database design cases. there is gitoxide support for the commit-graph, we
-  just didn't bother using it.
+  just didn't bother using it. but tbh we don't care.
