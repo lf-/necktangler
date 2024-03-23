@@ -48,7 +48,3 @@ commits from which you can bisect.
 
   the query as it stands was run like so:
   `psql $SOME_CONNECTION_DETAILS -v job=tested -v project=nixos -v jobset=trunk-combined --csv -f hydra-query.sql > data.csv`
-* make her faster (read: instant rather than a few seconds). probably could use
-  the commit-graph, as we *bet* that we are hitting absolutely pathological git
-  database design cases. there is gitoxide support for the commit-graph, we
-  just didn't bother using it. but tbh we don't care.
